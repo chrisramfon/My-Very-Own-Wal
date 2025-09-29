@@ -8,7 +8,7 @@ fn main() {
 
     println!("{}", message);
 
-    let image_data = match ImageData::load( "/home/chrisramfon/Projects/new_wal/test.jpg" ) {
+    let image_data = match ImageData::load( "/home/chrisramfon/Projects/new_wal/wallhaven-e873x8.png" ) {
         Ok(data) => data,
         Err(e) => {
             eprintln!( "Error when opening the image: {}", e );
