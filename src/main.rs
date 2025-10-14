@@ -1,4 +1,5 @@
-use auto_palette::{ImageData, Palette};
+use image::ImageReader;
+mod services;
 
 fn main() {
 
@@ -8,18 +9,27 @@ fn main() {
 
     println!("{}", message);
 
-    let image_data = match ImageData::load( "/home/chrisramfon/Projects/new_wal/wallhaven-e873x8.png" ) {
-        Ok(data) => data,
-        Err(e) => {
-            eprintln!( "Error when opening the image: {}", e );
-            return;
-        }
-    };
+    // let img = match image::open( "/home/junior/Projects/My-Very-Own-Wal/wallhaven-e873x8.png" ) {
+    //     Ok(data) => data,
+    //     Err( e ) => {
+    //         eprint!( "Error when opening an image." );
+    //         return;
+    //     }
+    // };
+    //
+    // // let palette: Palette<f64> = Palette::extract( &image_data ).unwrap();
+    //
+    // let pixels = img.as_bytes();
+    //
+    // let palette = get_palette_with_options( &pixels, PixelEncoding::Rgba, Quality::new( 1 ), MaxColors::new( 9 ), PixelFilter::None );
+    
+
+    let palette = services::palette_maker::PaletteMaker::get_palette( "/home/junior/Projects/My-Very-Own-Wal/wallhaven-e873x8.png" );
 
 
-    let palette: Palette<f64> = Palette::extract( &image_data ).unwrap();
+    println!( "{:?}", palette[ 0 ] );
 
-    println!( "{:?}", palette );
+    println!( "#{:02X}{:02X}{:02X}", palette[ 0 ].r, palette[ 0 ].g, palette[ 0 ].b );
 
 
 
