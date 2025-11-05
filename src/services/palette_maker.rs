@@ -1,12 +1,11 @@
-use palette_extract::{get_palette_with_options, PixelEncoding, Quality, MaxColors, PixelFilter, Color};
-use image::ImageReader;
+use palette_extract::{get_palette_with_options, PixelEncoding, Quality, MaxColors, PixelFilter};
 
-pub struct PaletteMaker { }
+pub struct PaletteMaker;
 
 impl PaletteMaker {
 
 
-    pub fn get_palette( image_path: &str ) -> Vec<palette_extract::Color>{
+    pub fn get_palette( image_path: &str ) -> Vec<palette_extract::Color> {
 
         let opened_image = image::open( &image_path );
 
@@ -22,9 +21,5 @@ impl PaletteMaker {
         return palette;
 
     }
-
-
-
-
 
 }
